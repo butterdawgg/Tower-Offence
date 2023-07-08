@@ -254,7 +254,7 @@ MonoBehaviour:
   damage: 10
   radius: 20
   cooldown: 0.2
-  projectileSpeed: 100
+  projectileSpeed: 150
 --- !u!135 &8215563874548242083
 SphereCollider:
   m_ObjectHideFlags: 0

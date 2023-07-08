@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170b20cab50c07b47adc51855619f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10000
+  maxHealth: 100
   speed: 3
   layerMaskSelf:
     serializedVersion: 2

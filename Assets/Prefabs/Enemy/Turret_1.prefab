@@ -251,7 +251,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 192
-  damage: 20
+  damage: 25
   radius: 40
   cooldown: 0.5
   projectileSpeed: 300
