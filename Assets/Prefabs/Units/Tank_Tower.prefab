@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5354259337182413931}
   - component: {fileID: 1487923219937844341}
   - component: {fileID: 4194540078822659083}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: tower_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5961976352425045847}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,8 +127,8 @@ GameObject:
   - component: {fileID: 3516137608261551286}
   - component: {fileID: 4212529414780199079}
   - component: {fileID: 2208191168222207773}
-  m_Layer: 7
-  m_Name: Tank
+  m_Layer: 9
+  m_Name: Tank_Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 5644035514827883853}
   - component: {fileID: 2352949070142222552}
   - component: {fileID: 3443639340286234661}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8907343250516702587}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: muzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8836059723734174376}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

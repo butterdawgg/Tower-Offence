@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9158114597936518082}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3479518475778397111}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6622135618236767546}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: muzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6393021874659001880}
   - component: {fileID: 3663245383301686150}
   - component: {fileID: 2857265920355097297}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: M249
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 320
   damage: 10
   radius: 10
-  cooldown: 0.2
+  cooldown: 0.1
   projectileSpeed: 100
 --- !u!135 &2857265920355097297
 SphereCollider:
@@ -183,9 +183,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9158114597936518082}
     m_Modifications:
+    - target: {fileID: 1035616698534036, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1261748888023320, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
       propertyPath: m_Name
       value: M249
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261748888023320, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564110021164438, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871450637170646, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1942557438936618, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4251306428143386, guid: 432643b6e5110004083fdff3e33e490b, type: 3}
       propertyPath: m_RootOrder

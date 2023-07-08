@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
 
         camera.fieldOfView = Mathf.Lerp(camera.fieldOfView, FOV, lerpK * Time.deltaTime);
 
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetKeyDown(KeyCode.Mouse1))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 
@@ -50,7 +50,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButton(1))
+        if (Input.GetKey(KeyCode.Mouse1))
         {
             Plane plane = new Plane(Vector3.up, Vector3.zero);
 

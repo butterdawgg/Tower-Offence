@@ -15,40 +15,56 @@ public abstract class Turret : MonoBehaviour
     [SerializeField] protected float cooldown;
     [SerializeField] protected float projectileSpeed;
 
-    protected Transform target;
+    protected List<Transform> targets;
 
     protected float lastShotTime = 0f;
 
     private void Awake()
     {
         GetComponent<SphereCollider>().radius = radius;
+
+        targets = new List<Transform>();
     }
 
     private void Update()
     {
-        if (target == null)
+        if (targets.Count == 0)
             return;
 
-        if ((transform.position - target.position).magnitude > radius + 1f)
+        foreach (Transform t in targets)
         {
-            target = null;
+            if (t == null)
+                targets.Remove(t);
+        }
 
-            turretBase.localEulerAngles = Vector3.zero;
-            turretPivot.localEulerAngles = Vector3.zero;
+        Transform closestTarget = targets[0];
+
+        foreach (Transform t in targets)
+        {
+            if ((closestTarget.position - transform.position).magnitude > (t.position - transform.position).magnitude)
+                closestTarget = t;
+        }
+
+        if (closestTarget == null)
+            return;
+
+        if ((transform.position - closestTarget.position).magnitude > radius + 1f)
+        {
+            targets.Remove(closestTarget);
 
             return;
         }
 
-        turretBase.LookAt(target.position);
+        turretBase.LookAt(closestTarget.position, Vector3.up);
         turretBase.localEulerAngles = new Vector3(0f, turretBase.localEulerAngles.y, 0f);
 
-        turretPivot.LookAt(target.position);
-        turretPivot.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0f, 0f);
+        turretPivot.LookAt(closestTarget.position, Vector3.up);
+        turretPivot.localEulerAngles = new Vector3(turretPivot.localEulerAngles.x, 0f, 0f);
 
-        if (lastShotTime < Time.time - cooldown & Vector3.Angle(muzzlePoint.forward, target.position - muzzlePoint.position) < 15f)
+        if (lastShotTime < Time.time - cooldown & Vector3.Angle(muzzlePoint.forward, closestTarget.position - muzzlePoint.position) < 15f)
         {
             Projectile proj = Instantiate(projectile.gameObject, muzzlePoint.position, Quaternion.identity, default).GetComponent<Projectile>();
-            proj.Launch(target, projectileSpeed, damage, layerMask);
+            proj.Launch(closestTarget, projectileSpeed, damage, layerMask);
 
             lastShotTime = Time.time;
         }

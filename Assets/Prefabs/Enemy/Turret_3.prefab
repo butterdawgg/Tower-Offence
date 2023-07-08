@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2273416545762105394}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: muzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 2076953868444992272}
   - component: {fileID: 9153194098568217352}
   - component: {fileID: 8215563874548242083}
-  m_Layer: 8
-  m_Name: Turret 2
+  m_Layer: 10
+  m_Name: Turret_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,9 +85,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 192
-  damage: 10
-  radius: 20
-  cooldown: 1
+  damage: 2
+  radius: 15
+  cooldown: 0.05
   projectileSpeed: 100
 --- !u!135 &8215563874548242083
 SphereCollider:
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4283602449635268298}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8368808036180793023}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 6980505964272430403}
   - component: {fileID: 6980505964269038945}
   - component: {fileID: 6980505964270137249}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shocker5.1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 6980505964272430405}
   - component: {fileID: 6980505964269038947}
   - component: {fileID: 6980505964270137251}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shocker5.2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

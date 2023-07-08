@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private SplineContainer sc;
+    [SerializeField] private float maxHealth;
     [SerializeField] private float speed;
-    [SerializeField] private float minX;
-    [SerializeField] private float minZ;
-    [SerializeField] private float maxX;
-    [SerializeField] private float maxZ;
-
-    private Rigidbody rb;
+    
+    [SerializeField] private LayerMask layerMaskSelf;
+    [SerializeField] private LayerMask layerMaskGround;
+    [SerializeField] private float lerpK;
 
     private Vector3 position;
     private Vector3 forwardVector;
@@ -26,25 +25,85 @@ public class Unit : MonoBehaviour
 
     private bool levelStarted = false;
 
-    public float Health { get; set; }
+    private bool selected = false;
+    private bool grabbed = false;
+    private Vector3 placedPosition;
+    private Vector3 initialPosition;
+
+    public SplineContainer SC { get; set; }
+    public float MinX { get; set; }
+    public float MinZ { get; set; }
+    public float MaxX { get; set; }
+    public float MaxZ { get; set; }
+    public float Health { get { return _health; } set { if (value > 0) _health = value; else _health = 0; } }
+    private float _health;
+
+    private void Awake()
+    {
+        Health = maxHealth;
+
+        placedPosition = Vector3Int.RoundToInt(transform.position);
+    }
 
     private void Update()
     {
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (levelStarted)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            OnLevelStart();
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, MinX, MaxX), transform.position.y, Mathf.Clamp(transform.position.z, MinZ, MaxZ));
 
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minX, maxX), transform.position.y, Mathf.Clamp(transform.position.z, minZ, maxZ));
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Vector3Int cursorPosition = Vector3Int.zero;
 
+        if (Physics.Raycast(ray, out RaycastHit hit1, 10000f, layerMaskSelf))
+        {
+            if (hit1.transform == transform)
+                selected = true;
+            else
+                selected = false;
+        }
+        else
+            selected = false;
+
+        if (Physics.Raycast(ray, out RaycastHit hit2, 10000f, layerMaskGround))
+        {
+            cursorPosition = Vector3Int.RoundToInt(new Vector3(hit2.point.x, 1f, hit2.point.z));
+        }
+
+        if (selected & Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            initialPosition = Vector3Int.RoundToInt(new Vector3(transform.position.x, 1f, transform.position.z));
+            grabbed = true;
+        }
+        if (grabbed & Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            if (Physics.CheckSphere(Vector3Int.RoundToInt(new Vector3(hit2.point.x, 0f, hit2.point.z)), 0.1f, layerMaskSelf) | cursorPosition.x > MaxX | cursorPosition.z > MaxZ | cursorPosition.x < MinX | cursorPosition.z < MinZ)
+                placedPosition = initialPosition;
+            else
+                placedPosition = cursorPosition;
+
+            grabbed = false;
+
+            //AudioManager.Instance.PlaySound("Place");
+        }
+
+        if (grabbed)
+            transform.position = Vector3.Lerp(transform.position, hit2.point + (Vector3.up * 2f), lerpK * Time.deltaTime);
+        else
+            transform.position = Vector3.Lerp(transform.position, placedPosition, lerpK * Time.deltaTime);
+    }
+
+    public void OnLevelStart()
+    {
         offsetX = transform.position.z;
         offsetZ = transform.position.x;
         offsetY = transform.position.y;
-    }
 
-    private void OnLevelStart()
-    {
         StartCoroutine(OnLevelStartCoroutine());
     }
 
@@ -52,7 +111,7 @@ public class Unit : MonoBehaviour
     {
         levelStarted = true;
 
-        float time = (offsetZ / speed) / (sc.CalculateLength(0) / speed);
+        float time = (offsetZ / speed) / (SC.CalculateLength(0) / speed);
         while (time < 1f)
         {
             Evaluate(time);
@@ -60,7 +119,7 @@ public class Unit : MonoBehaviour
             transform.position = position + (rightVector * offsetX) + (upVector * offsetY);
             transform.forward = forwardVector;
 
-            time += Time.deltaTime / (sc.CalculateLength(0) / speed);
+            time += Time.deltaTime / (SC.CalculateLength(0) / speed);
             yield return null;
         }
 
@@ -71,7 +130,7 @@ public class Unit : MonoBehaviour
 
     private void Evaluate(float time)
     {
-        sc.Evaluate(time, out float3 pos, out float3 tangent, out float3 up);
+        SC.Evaluate(time, out float3 pos, out float3 tangent, out float3 up);
 
         position = pos;
         forwardVector = tangent;
