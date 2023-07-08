@@ -22,13 +22,11 @@ public class Unit : MonoBehaviour
 
     private float offsetX;
     private float offsetZ;
+    private float offsetY;
 
     private bool levelStarted = false;
 
-    private void Awake()
-    {
-
-    }
+    public float Health { get; set; }
 
     private void Update()
     {
@@ -42,6 +40,7 @@ public class Unit : MonoBehaviour
 
         offsetX = transform.position.z;
         offsetZ = transform.position.x;
+        offsetY = transform.position.y;
     }
 
     private void OnLevelStart()
@@ -58,7 +57,8 @@ public class Unit : MonoBehaviour
         {
             Evaluate(time);
 
-            transform.position = position + (rightVector * offsetX);
+            transform.position = position + (rightVector * offsetX) + (upVector * offsetY);
+            transform.forward = forwardVector;
 
             time += Time.deltaTime / (sc.CalculateLength(0) / speed);
             yield return null;
