@@ -173,8 +173,8 @@ MonoBehaviour:
     m_Bits: 192
   damage: 5
   radius: 30
-  cooldown: 0.5
-  projectileSpeed: 100
+  cooldown: 0.15
+  projectileSpeed: 150
 --- !u!1001 &298680675117947655
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -226,7 +226,7 @@ MonoBehaviour:
   lerpK: 10
   price: 200
   type: 1
-  maxNumber: 20
+  maxNumber: 24
 --- !u!114 &5054026548035172421
 MonoBehaviour:
   m_ObjectHideFlags: 0
