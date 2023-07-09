@@ -6,10 +6,21 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject mainWindow;
+    [SerializeField] private GameObject startLevelWindow;
+    [SerializeField] private GameObject stopLevelWindow;
+    [SerializeField] private GameObject shopWindow;
+    [Space]
     [SerializeField] private GameObject pausedWindow;
+    [SerializeField] private GameObject pausedMainWindow;
     [SerializeField] private GameObject settingsWindow;
     [SerializeField] private GameObject exitWindow;
-
+    [Space]
+    [SerializeField] private Button startLevelButton;
+    [SerializeField] private Button stopLevelButton;
+    [SerializeField] private Button shopButton;
+    [SerializeField] private Button shopBackButton;
+    [Space]
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button settingsBackButton;
     [SerializeField] private Button exitButton;
@@ -21,6 +32,21 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         Resume();
+
+        mainWindow.SetActive(true);
+        startLevelWindow.SetActive(true);
+        stopLevelWindow.SetActive(false);
+        shopWindow.SetActive(false);
+
+        pausedWindow.SetActive(false);
+        pausedMainWindow.SetActive(true);
+        settingsWindow.SetActive(false);
+        exitWindow.SetActive(false);
+
+        startLevelButton.onClick.AddListener(OnStartLevelButtonClick);
+        stopLevelButton.onClick.AddListener(OnStopLevelButtonClick);
+        shopButton.onClick.AddListener(OnShopButtonClick);
+        shopBackButton.onClick.AddListener(OnShopBackButtonClick);
 
         settingsButton.onClick.AddListener(OnSettingsButtonClick);
         settingsBackButton.onClick.AddListener(OnSettingsBackButtonClick);
@@ -46,9 +72,8 @@ public class UIManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
+        mainWindow.SetActive(false);
         pausedWindow.SetActive(true);
-        settingsWindow.SetActive(false);
-        exitWindow.SetActive(false);
     }
 
     private void Resume()
@@ -57,42 +82,65 @@ public class UIManager : MonoBehaviour
 
         Time.timeScale = 1f;
 
+        mainWindow.SetActive(true);
         pausedWindow.SetActive(false);
-        settingsWindow.SetActive(false);
-        exitWindow.SetActive(false);
     }
 
+    private void OnStartLevelButtonClick()
+    {
+        UnitManager.Instance.StartLevel();
+
+        startLevelWindow.SetActive(false);
+        stopLevelWindow.SetActive(true);
+        shopWindow.SetActive(false);
+    }
+    private void OnStopLevelButtonClick()
+    {
+        UnitManager.Instance.StopLevel();
+
+        startLevelWindow.SetActive(true);
+        stopLevelWindow.SetActive(false);
+        shopWindow.SetActive(false);
+    }
+    private void OnShopButtonClick()
+    {
+        startLevelWindow.SetActive(false);
+        stopLevelWindow.SetActive(false);
+        shopWindow.SetActive(true);
+    }
+    private void OnShopBackButtonClick()
+    {
+        startLevelWindow.SetActive(true);
+        stopLevelWindow.SetActive(false);
+        shopWindow.SetActive(false);
+    }
     private void OnSettingsButtonClick()
     {
-        pausedWindow.SetActive(false);
+        pausedMainWindow.SetActive(false);
         settingsWindow.SetActive(true);
         exitWindow.SetActive(false);
     }
-
     private void OnSettingsBackButtonClick()
     {
-        pausedWindow.SetActive(true);
+        pausedMainWindow.SetActive(true);
         settingsWindow.SetActive(false);
         exitWindow.SetActive(false);
     }
-
     private void OnExitButtonClick()
     {
-        pausedWindow.SetActive(false);
+        pausedMainWindow.SetActive(false);
         settingsWindow.SetActive(false);
         exitWindow.SetActive(true);
     }
-
     private void OnExitConfirmButtonClick()
     {
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(0);
     }
-
     private void OnExitBackButtonClick()
     {
-        pausedWindow.SetActive(true);
+        pausedMainWindow.SetActive(true);
         settingsWindow.SetActive(false);
         exitWindow.SetActive(false);
     }

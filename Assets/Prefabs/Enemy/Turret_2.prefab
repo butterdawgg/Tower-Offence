@@ -252,7 +252,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   damage: 10
-  radius: 20
+  radius: 30
   cooldown: 0.2
   projectileSpeed: 150
 --- !u!135 &8215563874548242083

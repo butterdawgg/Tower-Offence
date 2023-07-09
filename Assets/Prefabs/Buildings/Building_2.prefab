@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1291836577666432163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: house_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 26f3ccb6a140f47418cc3cc1ef279bf1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6360585378438376033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0412, y: 0.0642, z: 0.4129}
+  m_LocalPosition: {x: -0.0412, y: 0.221, z: 1.214}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -151,7 +151,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 320
   damage: 10
-  radius: 20
+  radius: 15
   cooldown: 0.1
   projectileSpeed: 150
 --- !u!135 &2857265920355097297

@@ -14,6 +14,9 @@ public class Unit : MonoBehaviour
     [SerializeField] private LayerMask layerMaskSelf;
     [SerializeField] private LayerMask layerMaskGround;
     [SerializeField] private float lerpK;
+    [SerializeField] private float price;
+    [SerializeField] private UnitType type;
+    [SerializeField] private float maxNumber;
 
     private Vector3 position;
     private Vector3 forwardVector;
@@ -32,13 +35,17 @@ public class Unit : MonoBehaviour
     private Vector3 initialPosition;
 
     public SplineContainer SC { get; set; }
-    public float MinX { get; set; }
-    public float MinZ { get; set; }
-    public float MaxX { get; set; }
-    public float MaxZ { get; set; }
+    public int MinX { get; set; }
+    public int MinZ { get; set; }
+    public int MaxX { get; set; }
+    public int MaxZ { get; set; }
     public float Health { get { return _health; } set { if (value > 0) _health = value; else _health = 0; } }
     private float _health;
     public float MaxHealth { get; private set; }
+    public float Price { get { return price; } }
+    public UnitType Type { get { return type; } }
+    public float MaxNumber { get { return maxNumber; } }
+    public Vector3 StartPosition { get; set; }
 
     private void Awake()
     {
@@ -96,7 +103,7 @@ public class Unit : MonoBehaviour
         }
 
         if (grabbed)
-            transform.position = Vector3.Lerp(transform.position, hit2.point + (Vector3.up * 2f), lerpK * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(hit2.point.x, MinX, MaxX), 2f, Mathf.Clamp(hit2.point.z, MinZ, MaxZ)), lerpK * Time.deltaTime);
         else
             transform.position = Vector3.Lerp(transform.position, placedPosition, lerpK * Time.deltaTime);
     }
@@ -108,6 +115,11 @@ public class Unit : MonoBehaviour
         offsetY = transform.position.y;
 
         StartCoroutine(OnLevelStartCoroutine());
+    }
+
+    public void OnLevelStop()
+    {
+        StopCoroutine(OnLevelStartCoroutine());
     }
 
     private IEnumerator OnLevelStartCoroutine()
@@ -144,4 +156,12 @@ public class Unit : MonoBehaviour
         upVector.Normalize();
         rightVector.Normalize();
     }
+}
+
+public enum UnitType
+{
+    Pistol,
+    Rifle,
+    LMG,
+    Sniper
 }

@@ -7,7 +7,8 @@ public enum FloatType
 {
     MasterVolume,
     SfxVolume,
-    MusicVolume
+    MusicVolume,
+    Money
 }
 
 public enum IntType
