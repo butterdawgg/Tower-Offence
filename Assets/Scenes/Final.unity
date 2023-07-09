@@ -594,7 +594,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1355942364
 MonoBehaviour:
@@ -908,80 +908,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493164362}
   m_CullTransparentMesh: 1
---- !u!1 &1583116146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1583116147}
-  - component: {fileID: 1583116148}
-  m_Layer: 0
-  m_Name: '[AudioManager]'
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1583116147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583116146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1583116148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1583116146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 557adbeafa394444882a48d4ffbef38d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: ButtonHover
-    clip: {fileID: 8300000, guid: 3011134e795daeb4a86fc8614b7bae4f, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
-  - name: ButtonClick
-    clip: {fileID: 8300000, guid: 89ae561daef3c4f41a0bf24fdd0e3ea6, type: 3}
-    volume: 0.25
-    source: {fileID: 0}
-  music:
-  - name: soundtrack1
-    clip: {fileID: 8300000, guid: d3ce15a2cc3252749b3e5078135d109e, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
-  - name: soundtrack2
-    clip: {fileID: 8300000, guid: afa10b4a9aa4cd84c9e813a6508f9e11, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
-  - name: soundtrack3
-    clip: {fileID: 8300000, guid: 330e94702df9fa54fb7b78dd744bd074, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
-  - name: soundtrack4
-    clip: {fileID: 8300000, guid: e5b1177e5e3689941ab6482ddcdab5fe, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
-  - name: soundtrack5
-    clip: {fileID: 8300000, guid: 13831eb8fcf72d54084b1fb18ff4a428, type: 3}
-    volume: 0.5
-    source: {fileID: 0}
 --- !u!1 &1606658023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1005,7 @@ RectTransform:
   m_Children:
   - {fileID: 2010740477}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

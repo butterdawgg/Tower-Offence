@@ -2524,6 +2524,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 89ae561daef3c4f41a0bf24fdd0e3ea6, type: 3}
     volume: 0.25
     source: {fileID: 0}
+  - name: Fire
+    clip: {fileID: 8300000, guid: 89ae561daef3c4f41a0bf24fdd0e3ea6, type: 3}
+    volume: 0.25
+    source: {fileID: 0}
   music:
   - name: soundtrack1
     clip: {fileID: 8300000, guid: d3ce15a2cc3252749b3e5078135d109e, type: 3}
