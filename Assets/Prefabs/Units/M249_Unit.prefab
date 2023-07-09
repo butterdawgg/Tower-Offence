@@ -330,6 +330,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lerpK: 10
+  price: 500
+  type: 2
+  maxNumber: 4
 --- !u!114 &3230788804865893337
 MonoBehaviour:
   m_ObjectHideFlags: 0

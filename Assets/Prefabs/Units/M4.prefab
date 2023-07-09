@@ -150,9 +150,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 320
-  damage: 10
+  damage: 5
   radius: 20
-  cooldown: 0.2
+  cooldown: 0.15
   projectileSpeed: 150
 --- !u!135 &2857265920355097297
 SphereCollider:

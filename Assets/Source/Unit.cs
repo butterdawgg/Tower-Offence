@@ -47,6 +47,8 @@ public class Unit : MonoBehaviour
     public float MaxNumber { get { return maxNumber; } }
     public Vector3 StartPosition { get; set; }
 
+    public bool IsDead { get; set; }
+
     private void Awake()
     {
         Health = maxHealth;
@@ -57,9 +59,13 @@ public class Unit : MonoBehaviour
 
     private void Update()
     {
-        if (Health <= 0)
+        if (Health <= 0 & !IsDead)
         {
-            Destroy(gameObject);
+            IsDead = true;
+
+            StopAllCoroutines();
+
+            gameObject.SetActive(false);
         }
 
         if (levelStarted)
@@ -119,7 +125,9 @@ public class Unit : MonoBehaviour
 
     public void OnLevelStop()
     {
-        StopCoroutine(OnLevelStartCoroutine());
+        StopAllCoroutines();
+
+        levelStarted = false;
     }
 
     private IEnumerator OnLevelStartCoroutine()

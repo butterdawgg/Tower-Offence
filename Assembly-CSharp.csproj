@@ -71,8 +71,10 @@
     <Compile Include="Assets\Source\ProjectileEnemy.cs" />
     <Compile Include="Assets\Source\Managers\SettingsManager.cs" />
     <Compile Include="Assets\Source\Unit.cs" />
+    <Compile Include="Assets\Source\WinDetector.cs" />
     <Compile Include="Assets\Source\HealthBar.cs" />
     <Compile Include="Assets\Source\Managers\SerializeManager.cs" />
+    <Compile Include="Assets\Source\FinalSceneManager.cs" />
     <Compile Include="Assets\Source\UnitManager.cs" />
     <Compile Include="Assets\Source\Enemy.cs" />
     <Compile Include="Assets\Source\EnemyHealthBar.cs" />

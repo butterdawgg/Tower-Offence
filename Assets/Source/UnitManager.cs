@@ -17,6 +17,7 @@ public class UnitManager : MonoBehaviour
     [SerializeField] private int maxZ;
 
     private List<Unit> units;
+    private List<Enemy> enemies;
 
     private bool levelStarted = false;
 
@@ -29,11 +30,25 @@ public class UnitManager : MonoBehaviour
         else
             Instance = this;
 
+        if (SerializeManager.GetBool(BoolType.FirstPlay))
+        {
+            SerializeManager.SetFloat(FloatType.Money, 100f);
+            SerializeManager.SetBool(BoolType.FirstPlay, false);
+        }
+
+
         units = new List<Unit>();
 
         foreach (Unit u in FindObjectsOfType<Unit>())
         {
             units.Add(u);
+        }
+
+        enemies = new List<Enemy>();
+
+        foreach (Enemy e in FindObjectsOfType<Enemy>())
+        {
+            enemies.Add(e);
         }
 
         foreach (Unit u in units)
@@ -44,6 +59,11 @@ public class UnitManager : MonoBehaviour
             u.MinZ = minZ;
             u.MaxZ = maxZ;
         }
+    }
+
+    public bool CanStartLevel()
+    {
+        return !levelStarted & units.Count > 0;
     }
 
     public void StartLevel()
@@ -69,8 +89,23 @@ public class UnitManager : MonoBehaviour
             foreach (Unit u in units)
             {
                 u.OnLevelStop();
-                u.transform.position = u.StartPosition;
+                u.gameObject.SetActive(true);
+                u.IsDead = false;
                 u.Health = u.MaxHealth;
+
+                u.transform.position = u.StartPosition;
+            }
+
+            foreach(Enemy e in enemies)
+            {
+                e.gameObject.SetActive(true);
+                e.IsDead = false;
+                e.Health = e.MaxHealth;
+            }
+
+            foreach(Projectile p in FindObjectsOfType<Projectile>())
+            {
+                Destroy(p.gameObject);
             }
         }
     }
@@ -139,6 +174,18 @@ public class UnitManager : MonoBehaviour
         SerializeManager.SetFloat(FloatType.Money, SerializeManager.GetFloat(FloatType.Money) + unitsForSale[random].Price);
 
         Destroy(unitsForSale[random].gameObject);
+    }
+
+    public void SellEverything()
+    {
+        float sum = 0f;
+
+        foreach (Unit u in units)
+        {
+            sum += u.Price;
+        }
+
+        SerializeManager.SetFloat(FloatType.Money, SerializeManager.GetFloat(FloatType.Money) + sum);
     }
 
     public float GetPrice(int unitID)

@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 3
+  speed: 30
   layerMaskSelf:
     serializedVersion: 2
     m_Bits: 128
@@ -330,6 +330,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   lerpK: 10
+  price: 100
+  type: 0
+  maxNumber: 8
 --- !u!114 &8892807789374592814
 MonoBehaviour:
   m_ObjectHideFlags: 0

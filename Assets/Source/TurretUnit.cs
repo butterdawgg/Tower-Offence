@@ -7,6 +7,9 @@ public class TurretUnit : Turret
     protected override void OnCollision(Collider other)
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
-            targets.Add(enemy.transform);
+        {
+            if (!enemy.IsDead)
+                targets.Add(enemy.transform);
+        }
     }
 }

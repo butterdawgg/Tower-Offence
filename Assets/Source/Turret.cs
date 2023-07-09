@@ -37,6 +37,12 @@ public abstract class Turret : MonoBehaviour
                 targets.Remove(t);
         }
 
+        foreach (Transform t in targets)
+        {
+            if (!t.gameObject.activeInHierarchy)
+                targets.Remove(t);
+        }
+
         Transform closestTarget = targets[0];
 
         foreach (Transform t in targets)

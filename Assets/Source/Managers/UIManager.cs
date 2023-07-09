@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button exitButton;
     [SerializeField] private Button exitConfirmButton;
     [SerializeField] private Button exitBackButton;
+    [Space]
+    [SerializeField] private TextMeshProUGUI moneyText;
 
     public bool IsPaused { get; private set; }
 
@@ -64,6 +67,8 @@ public class UIManager : MonoBehaviour
             else
                 Resume();
         }
+
+        moneyText.text = "balance: " + SerializeManager.GetFloat(FloatType.Money);
     }
 
     private void Pause()
@@ -88,11 +93,14 @@ public class UIManager : MonoBehaviour
 
     private void OnStartLevelButtonClick()
     {
-        UnitManager.Instance.StartLevel();
+        if (UnitManager.Instance.CanStartLevel())
+        {
+            UnitManager.Instance.StartLevel();
 
-        startLevelWindow.SetActive(false);
-        stopLevelWindow.SetActive(true);
-        shopWindow.SetActive(false);
+            startLevelWindow.SetActive(false);
+            stopLevelWindow.SetActive(true);
+            shopWindow.SetActive(false);
+        }
     }
     private void OnStopLevelButtonClick()
     {
@@ -134,6 +142,8 @@ public class UIManager : MonoBehaviour
     }
     private void OnExitConfirmButtonClick()
     {
+        UnitManager.Instance.SellEverything();
+
         Time.timeScale = 1f;
 
         SceneManager.LoadScene(0);

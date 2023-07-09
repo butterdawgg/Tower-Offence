@@ -66,8 +66,8 @@ public static class SerializeManager
             return Convert.ToBoolean(PlayerPrefs.GetInt(type.ToString()));
         else
         {
-            PlayerPrefs.SetInt(type.ToString(), Convert.ToInt32(false));
-            return false;
+            PlayerPrefs.SetInt(type.ToString(), Convert.ToInt32(true));
+            return true;
         }
     }
 }

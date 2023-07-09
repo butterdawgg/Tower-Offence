@@ -16,7 +16,7 @@ TagManager:
   - Enemy
   - TurretUnit
   - TurretEnemy
-  - 
+  - WinDetector
   - 
   - 
   - 
