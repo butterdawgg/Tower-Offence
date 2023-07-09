@@ -69,6 +69,8 @@ public abstract class Turret : MonoBehaviour
 
         if (lastShotTime < Time.time - cooldown & Vector3.Angle(muzzlePoint.forward, closestTarget.position - muzzlePoint.position) < 15f)
         {
+            AudioManager.Instance.PlaySound("Fire");
+
             Projectile proj = Instantiate(projectile.gameObject, muzzlePoint.position, Quaternion.identity, default).GetComponent<Projectile>();
             proj.Launch(closestTarget, projectileSpeed, damage, layerMask);
 
