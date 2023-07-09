@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Splines;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -37,10 +38,12 @@ public class Unit : MonoBehaviour
     public float MaxZ { get; set; }
     public float Health { get { return _health; } set { if (value > 0) _health = value; else _health = 0; } }
     private float _health;
+    public float MaxHealth { get; private set; }
 
     private void Awake()
     {
         Health = maxHealth;
+        MaxHealth = maxHealth;
 
         placedPosition = Vector3Int.RoundToInt(transform.position);
     }

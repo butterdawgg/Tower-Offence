@@ -8,10 +8,12 @@ public class Enemy : MonoBehaviour
 
     public float Health { get { return _health; } set { if (value > 0) _health = value; else _health = 0; } }
     private float _health;
+    public float MaxHealth { get; private set; }
 
     private void Awake()
     {
         Health = maxHealth;
+        MaxHealth = maxHealth;
     }
 
     private void Update()

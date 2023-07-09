@@ -22,12 +22,20 @@ public class CameraController : MonoBehaviour
     private float FOV;
 
     private new Camera camera;
+    public static CameraController Instance { get; private set; }
+    public Camera Camera { get { return camera; } }
 
     private void Awake()
     {
+        if (Instance != null)
+            Destroy(gameObject);
+        else
+            Instance = this;
+
         camera = GetComponent<Camera>();
 
         position = transform.position;
+        
     }
 
     private void Update()
