@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 200
-  moneyDropAmount: 20
+  moneyDropAmount: 50
 --- !u!114 &674759140241372915
 MonoBehaviour:
   m_ObjectHideFlags: 0

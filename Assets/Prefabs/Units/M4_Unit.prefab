@@ -215,8 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 170b20cab50c07b47adc51855619f06f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  speed: 3
+  maxHealth: 150
+  speed: 5
   layerMaskSelf:
     serializedVersion: 2
     m_Bits: 128
@@ -226,7 +226,7 @@ MonoBehaviour:
   lerpK: 10
   price: 200
   type: 1
-  maxNumber: 4
+  maxNumber: 20
 --- !u!114 &5054026548035172421
 MonoBehaviour:
   m_ObjectHideFlags: 0

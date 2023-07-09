@@ -237,8 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f06f27469516644bb36a7f109c44dc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  moneyDropAmount: 50
+  maxHealth: 150
+  moneyDropAmount: 100
 --- !u!114 &6718160796286071404
 MonoBehaviour:
   m_ObjectHideFlags: 0
