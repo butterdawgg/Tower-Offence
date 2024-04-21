@@ -3,4 +3,7 @@ Library
 Logs
 obj
 Temp
-.vsconfig
+UserSettings
+*.vsconfig
+*.csproj
+*.sln
